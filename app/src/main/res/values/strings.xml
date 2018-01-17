@@ -17,4 +17,9 @@
         <item>Add Supervision Information</item>
         <item>Add CEU Information</item>
     </string-array>
+
+    <string name="supervision_hours_hint">Hours of Supervision</string>
+    <string name="supervision_notes_hint">Notes about Supervision</string>
+    <string name="ceu_credits_hint">Number of CEU credits</string>
+    <string name="ceu_notes_hint">Notes about CEU credits</string>
 </resources>

@@ -1,9 +1,14 @@
 <?xml version="1.0" encoding="utf-8"?>
 
 
-
-<TextView
+<LinearLayout
     xmlns:android="http://schemas.android.com/apk/res/android"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:orientation="vertical">
+    
+    
+    <TextView
     android:id="@+id/supervision_editable_expander"
     android:layout_width="match_parent"
     android:layout_height="wrap_content"
@@ -12,4 +17,23 @@
     android:textStyle="bold"
     android:drawableRight="@drawable/ic_arrow_down"
     android:drawableEnd="@drawable/ic_arrow_down"/>
+    
+    
+    <EditText
+        android:id="@+id/et_hours"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:visibility="invisible"/>
+    <android.support.v7.widget.AppCompatSpinner
+        android:id="@+id/spin_type"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:visibility="invisible">
+    </android.support.v7.widget.AppCompatSpinner>
+    <EditText
+        android:id="@+id/et_notes"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:visibility="invisible"/>
 
+</LinearLayout>

@@ -1,12 +1,10 @@
-package com.wills.carl.socialworkhelper;
+package com.wills.carl.socialworkhelper.edit;
 
 import android.content.Intent;
 import android.os.Bundle;
-import android.os.PersistableBundle;
 import android.support.annotation.Nullable;
 import android.support.v7.app.AppCompatActivity;
 import android.support.v7.widget.Toolbar;
-import android.util.Log;
 import android.view.Menu;
 import android.view.MenuItem;
 import android.view.View;
@@ -16,7 +14,8 @@ import android.widget.ListView;
 import android.widget.RadioGroup;
 import android.widget.TextView;
 
-import org.w3c.dom.Text;
+import com.wills.carl.socialworkhelper.R;
+import com.wills.carl.socialworkhelper.Supervision;
 
 import java.text.SimpleDateFormat;
 import java.util.Date;
@@ -108,6 +107,7 @@ public class EditEvent extends AppCompatActivity {
         Intent returnIntent = new Intent();
         returnIntent.putExtra("date", dateLong);
         returnIntent.putExtra("data", supervision.toString());
+        setResult(RESULT_OK, returnIntent);
         finish();
     }
 }
