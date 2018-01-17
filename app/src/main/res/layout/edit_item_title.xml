@@ -1,0 +1,15 @@
+<?xml version="1.0" encoding="utf-8"?>
+
+
+
+<TextView
+    xmlns:android="http://schemas.android.com/apk/res/android"
+    android:id="@+id/supervision_editable_expander"
+    android:layout_width="match_parent"
+    android:layout_height="wrap_content"
+    android:gravity="center"
+    android:textSize="36sp"
+    android:textStyle="bold"
+    android:drawableRight="@drawable/ic_arrow_down"
+    android:drawableEnd="@drawable/ic_arrow_down"/>
+

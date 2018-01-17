@@ -1,0 +1,20 @@
+<resources>
+    <string name="app_name">SocialWorkHelper</string>
+
+    <string name="navigation_drawer_open">Open navigation drawer</string>
+    <string name="navigation_drawer_close">Close navigation drawer</string>
+
+    <string name="action_settings">Settings</string>
+
+    <!-- TODO: Remove or change this placeholder text -->
+    <string name="hello_blank_fragment">Hello blank fragment</string>
+    <string name="month_note_hint">Enter a note here!</string>
+
+    <string name="save_text">Save</string>
+    <string name="edit_button_text">Edit</string>
+
+    <string-array name="edit_titles">
+        <item>Add Supervision Information</item>
+        <item>Add CEU Information</item>
+    </string-array>
+</resources>
