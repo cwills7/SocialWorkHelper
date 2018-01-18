@@ -16,6 +16,9 @@ import android.widget.TextView;
 
 import com.github.sundeepk.compactcalendarview.CompactCalendarView;
 import com.github.sundeepk.compactcalendarview.domain.Event;
+import com.google.android.gms.ads.AdRequest;
+import com.google.android.gms.ads.AdView;
+import com.google.android.gms.ads.MobileAds;
 import com.wills.carl.socialworkhelper.edit.EditEvent;
 import com.wills.carl.socialworkhelper.R;
 import com.wills.carl.socialworkhelper.Supervision;
@@ -44,6 +47,7 @@ public class CalendarFragment extends Fragment {
     private static final String ARG_PARAM2 = "param2";
 
     private SimpleDateFormat dateFormatForMonth = new SimpleDateFormat("MMM - yyyy", Locale.getDefault());
+    final String testAddAppID= "ca-app-pub-3940256099942544/6300978111";
 
 
     // TODO: Rename and change types of parameters
@@ -56,6 +60,7 @@ public class CalendarFragment extends Fragment {
     Button mEditButton;
     EditText mMonthNote;
     CompactCalendarView compactCalendarView = null;
+    private AdView adView;
 
     private OnFragmentInteractionListener mListener;
 
@@ -149,7 +154,6 @@ public class CalendarFragment extends Fragment {
             @Override
             public void onFocusChange(View view, boolean hasFocus) {
                 if (!hasFocus){
-                    db.insertMonthNote(convertToMonthInt(mMonthName.getText().toString()), convertToYearInt(mMonthName.getText().toString()), mMonthNote.getText().toString());
                 }
             }
         });
@@ -161,6 +165,12 @@ public class CalendarFragment extends Fragment {
         compactCalendarView.addEvent(ev1, false);
         compactCalendarView.addEvent(ev2, false);
         compactCalendarView.addEvent(ev3, false);
+
+        MobileAds.initialize(rootView.getContext(), testAddAppID);
+
+        adView = rootView.findViewById(R.id.addBar);
+        AdRequest adRequest = new AdRequest.Builder().build();
+        adView.loadAd(adRequest);
 
         return rootView;
     }

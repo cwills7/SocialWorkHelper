@@ -16,12 +16,18 @@ import android.support.v7.widget.Toolbar;
 import android.view.Menu;
 import android.view.MenuItem;
 
+import com.google.android.gms.ads.AdSize;
+import com.google.android.gms.ads.AdView;
+import com.google.android.gms.ads.MobileAds;
 import com.wills.carl.socialworkhelper.calendar.CalendarFragment;
 import com.wills.carl.socialworkhelper.db.EventDb;
 import com.wills.carl.socialworkhelper.history.HistoryFragment;
 
 public class MainActivity extends AppCompatActivity
         implements NavigationView.OnNavigationItemSelectedListener, HistoryFragment.OnFragmentInteractionListener, CalendarFragment.OnFragmentInteractionListener{
+
+    final String addAppID = "ca-app-pub-8945138794185085~6668185051";
+    final String testAddAppID= "ca-app-pub-3940256099942544/6300978111";
 
     EventDb db;
     @Override
@@ -54,6 +60,8 @@ public class MainActivity extends AppCompatActivity
 
         NavigationView navigationView = (NavigationView) findViewById(R.id.nav_view);
         navigationView.setNavigationItemSelectedListener(this);
+
+
     }
 
     @Override

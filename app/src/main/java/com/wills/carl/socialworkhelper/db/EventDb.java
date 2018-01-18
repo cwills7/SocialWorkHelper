@@ -7,6 +7,7 @@ import android.database.CursorIndexOutOfBoundsException;
 import android.database.sqlite.SQLiteDatabase;
 import android.database.sqlite.SQLiteOpenHelper;
 import android.util.EventLog;
+import android.util.Log;
 
 import com.wills.carl.socialworkhelper.Supervision;
 
@@ -156,38 +157,49 @@ public class EventDb extends SQLiteOpenHelper {
         SQLiteDatabase db = this.getReadableDatabase();
         Cursor res = db.rawQuery("select * from " + MONTH_NOTE_TABLE_NAME + " where " + MONTH_NOTE_MONTH + " = " + month + " AND " + MONTH_NOTE_YEAR + " = " + year,
                 null);
+        Log.d("GETMONTHNOTE", "Month-year " + month + " - " + year);
+
         res.moveToFirst();
         String note = "";
         if(res.getCount() == 0){
             return null;
         }
-        if( !res.isAfterLast()){
+        if(!res.isAfterLast()){
             note = res.getString(res.getColumnIndex(MONTH_NOTE_NOTE));
+            Log.d("GETRESULT", "NOTE: " + note);
         }
         return note;
     }
 
     public void insertMonthNote(int month, int year, String note) {
-        SQLiteDatabase db = this.getWritableDatabase();
-        if(getMonthNote(month,year).isEmpty()) {
-            ContentValues values = new ContentValues();
-            values.put("month", month);
-            values.put("year", year);
-            values.put("note",note);
-            db.insert(MONTH_NOTE_TABLE_NAME, null, values);
-        }else{
-            updateMonthNote(month, year, note);
+        if(!note.isEmpty()){
+            SQLiteDatabase db = this.getWritableDatabase();
+            String prevNote = getMonthNote(month, year);
+            if (prevNote == null || prevNote.isEmpty()) {
+                Log.d("Debug", "PrevNote: " + prevNote + " This Note: " + note);
+                Log.d("INSERTMONTHNOTE", "Month-year " + month + " - " + year + " note: " + note);
+                ContentValues values = new ContentValues();
+                values.put("month", month);
+                values.put("year", year);
+                values.put("note", note);
+                long insertResult = db.insert(MONTH_NOTE_TABLE_NAME, null, values);
+                Log.d("INSERTRESULT", Long.toString(insertResult));
+            } else {
+                Log.d("Debug", "PrevNote: " + prevNote + " This Note: " + note);
+                updateMonthNote(month, year, note);
+            }
         }
-
     }
 
     public int updateMonthNote(int month, int year, String note){
         SQLiteDatabase db = this.getWritableDatabase();
         ContentValues values = new ContentValues();
+        Log.d("UPDATEMONTHNOTE", "Month-year " + month + " - " + year + " note: " + note);
         values.put("note",note);
         String selection = MONTH_NOTE_MONTH + "=? AND " + MONTH_NOTE_YEAR +"=?";
         String [] selectionArgs = {String.valueOf(month), String.valueOf(year)};
         int updated = db.update(MONTH_NOTE_TABLE_NAME, values, selection, selectionArgs);
+        Log.d("UPDATED? = ", Integer.toString(updated));
         return updated;
     }
 }
