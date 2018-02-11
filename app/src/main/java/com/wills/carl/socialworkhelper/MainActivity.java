@@ -1,5 +1,6 @@
 package com.wills.carl.socialworkhelper;
 
+import android.content.Intent;
 import android.net.Uri;
 import android.os.Bundle;
 import android.support.design.widget.NavigationView;
@@ -87,7 +88,9 @@ public class MainActivity extends AppCompatActivity
 
         //noinspection SimplifiableIfStatement
         if (id == R.id.action_settings) {
-
+            Intent intent = new Intent(this, SettingsActivity.class);
+            startActivity(intent);
+            return true;
         }
 
         return super.onOptionsItemSelected(item);
@@ -107,8 +110,6 @@ public class MainActivity extends AppCompatActivity
             fragmentClass = HistoryFragment.class;
         } else if (id == R.id.nav_totals) {
 
-        } else if (id == R.id.nav_settings) {
-            fragmentClass = SettingsActivity.class;
         }
 
         try{

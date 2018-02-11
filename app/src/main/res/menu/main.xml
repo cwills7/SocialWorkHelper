@@ -10,7 +10,8 @@
     <item
         android:id="@+id/save_button"
         android:title="@string/save_text"
-        app:showAsAction="ifRoom"
+        android:icon="@drawable/ic_action_name"
+        app:showAsAction="always"
         android:orderInCategory="1"
-        android:visible="false"/>
+        android:visible="true"/>
 </menu>

@@ -19,7 +19,6 @@ import com.wills.carl.socialworkhelper.Supervision;
 
 import java.text.SimpleDateFormat;
 import java.util.Date;
-import java.util.Locale;
 
 /**
  * Created by Carl on 1/15/2018.
@@ -37,7 +36,7 @@ public class EditEvent extends AppCompatActivity {
     EditText mCeuNotes;
     RadioGroup mCeuType;
 
-    private SimpleDateFormat dateFormatForEditTitle = new SimpleDateFormat("MM-DD-yyyy", Locale.getDefault());
+    private SimpleDateFormat dateFormatForEditTitle = new SimpleDateFormat("MMMM d, yyyy");
     long dateLong;
 
     @Override
