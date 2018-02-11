@@ -19,10 +19,10 @@ import com.github.sundeepk.compactcalendarview.domain.Event;
 import com.google.android.gms.ads.AdRequest;
 import com.google.android.gms.ads.AdView;
 import com.google.android.gms.ads.MobileAds;
-import com.wills.carl.socialworkhelper.edit.EditEvent;
 import com.wills.carl.socialworkhelper.R;
 import com.wills.carl.socialworkhelper.Supervision;
 import com.wills.carl.socialworkhelper.db.EventDb;
+import com.wills.carl.socialworkhelper.edit.EditEvent;
 
 import java.text.SimpleDateFormat;
 import java.util.Calendar;
@@ -106,7 +106,7 @@ public class CalendarFragment extends Fragment {
         List<Supervision> events = db.getEventsFromDB();
 
         for(Supervision sup: events){
-           Event event = sup.convertToEvent();
+            Event event = sup.convertToEvent();
             compactCalendarView.addEvent(event, false);
         }
 
@@ -130,25 +130,26 @@ public class CalendarFragment extends Fragment {
             @Override
             public void onMonthScroll(Date firstDayOfNewMonth) {
                 Log.d(TAG, "Month was scrolled to: " + firstDayOfNewMonth);
-                db.insertMonthNote(convertToMonthInt(mMonthName.getText().toString()), convertToYearInt(mMonthName.getText().toString()), mMonthNote.getText().toString());
+                //db.insertMonthNote(convertToMonthInt(mMonthName.getText().toString()), convertToYearInt(mMonthName.getText().toString()), mMonthNote.getText().toString());
                 mMonthName.setText(dateFormatForMonth.format(compactCalendarView.getFirstDayOfCurrentMonth()));
-                mMonthNote.setText(db.getMonthNote(convertToMonthInt(mMonthName.getText().toString()), convertToYearInt(mMonthName.getText().toString())));
+                //mMonthNote.setText(db.getMonthNote(convertToMonthInt(mMonthName.getText().toString()), convertToYearInt(mMonthName.getText().toString())));
             }
         });
 
         mEditButton = (Button) rootView.findViewById(R.id.calendar_edit_button);
+        mEditButton.setText("EDIT");
         mEditButton.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
-            Intent intent = new Intent(rootView.getContext(), EditEvent.class);
-            Log.d("CALENDER FRAG", "Text: " + mTextView.getText());
+                Intent intent = new Intent(rootView.getContext(), EditEvent.class);
+                Log.d("CALENDER FRAG", "Text: " + mTextView.getText());
 
-            intent.putExtra("dateInMillis", mTextView.getText());
-            startActivityForResult(intent,1);
+                intent.putExtra("dateInMillis", mTextView.getText());
+                startActivityForResult(intent,1);
             }
         });
 
-        mMonthNote = (EditText) rootView.findViewById(R.id.et_month_note);
+       /* mMonthNote = (EditText) rootView.findViewById(R.id.et_month_note);
         mMonthNote.setCursorVisible(false);
         mMonthName.setOnFocusChangeListener(new View.OnFocusChangeListener() {
             @Override
@@ -157,7 +158,7 @@ public class CalendarFragment extends Fragment {
                 }
             }
         });
-
+*/
         Event ev1 = new Event(Color.GREEN, 1515974400000L, "Some Text to Store");
         Event ev2 = new Event(Color.GREEN, 1516168800000L, "some text for another day");
         Event ev3 = new Event(Color.GREEN, 1515974400000L, "Some MORE Text to Store");
@@ -184,9 +185,11 @@ public class CalendarFragment extends Fragment {
 
     @Override
     public void onActivityResult(int requestCode, int resultCode, Intent data){
-        if(requestCode == 1){
-            compactCalendarView.addEvent(new Event(Color.GREEN,
-                    data.getLongExtra("date", System.currentTimeMillis()), data.getStringExtra("data")), false);
+        if(requestCode == 1) {
+            if (data != null) {
+                compactCalendarView.addEvent(new Event(Color.GREEN,
+                        data.getLongExtra("date", System.currentTimeMillis()), data.getStringExtra("data")), false);
+            }
         }
 
     }

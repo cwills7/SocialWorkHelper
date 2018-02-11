@@ -1,0 +1,12 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+    <array name="ceu_type_array">
+        <item>Ethics</item>
+        <item>Macro</item>
+    </array>
+
+    <array name="supervision_type_array">
+        <item>Online</item>
+        <item>Face-To-Face</item>
+    </array>
+</resources>

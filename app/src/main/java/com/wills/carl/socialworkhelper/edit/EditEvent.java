@@ -8,13 +8,13 @@ import android.support.v7.widget.Toolbar;
 import android.view.Menu;
 import android.view.MenuItem;
 import android.view.View;
-import android.widget.ArrayAdapter;
 import android.widget.EditText;
 import android.widget.ListView;
 import android.widget.RadioGroup;
 import android.widget.TextView;
 
 import com.wills.carl.socialworkhelper.R;
+import com.wills.carl.socialworkhelper.SettingsActivity;
 import com.wills.carl.socialworkhelper.Supervision;
 
 import java.text.SimpleDateFormat;
@@ -27,8 +27,6 @@ import java.util.Locale;
 
 public class EditEvent extends AppCompatActivity {
 
-    //TODO: Date Picker
-    //TODO: List View of collapsable options? Like in meal planner
     TextView tv_edit_date_title;
 
     EditText mSupervisionHours;
@@ -64,7 +62,7 @@ public class EditEvent extends AppCompatActivity {
         String [] items = {"Add Supervision Information", "Add CEU Information"};
 
         ListView list = (ListView) findViewById(R.id.lv_edit_list);
-        ArrayAdapter adapter = new ArrayAdapter(this, R.layout.edit_item_title, items);
+        EditAdapter adapter = new EditAdapter(this, R.layout.edit_item, items);
         list.setAdapter(adapter);
         list.setVisibility(View.VISIBLE);
 
@@ -88,6 +86,8 @@ public class EditEvent extends AppCompatActivity {
 
         //noinspection SimplifiableIfStatement
         if (id == R.id.action_settings) {
+            Intent intent = new Intent(this, SettingsActivity.class);
+            startActivity(intent);
             return true;
         }
 

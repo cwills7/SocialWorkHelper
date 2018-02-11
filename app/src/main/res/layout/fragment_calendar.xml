@@ -7,8 +7,9 @@
 
 
     <RelativeLayout
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content">
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:background="@color/colorPrimary">
 
         <TextView
             android:id="@+id/my_text_view"
@@ -24,63 +25,62 @@
             android:gravity="center"
             style="@style/TextAppearance.AppCompat.Title"/>
 
-
-        <EditText
-            android:id="@+id/et_month_note"
-            android:layout_height="72dp"
+        <com.github.sundeepk.compactcalendarview.CompactCalendarView
+            android:id="@+id/cv_calendar"
             android:layout_width="match_parent"
-            android:gravity="top"
-            android:textSize="22sp"
-            android:background="@drawable/border"
-            android:hint="@string/month_note_hint"
-            android:layout_below="@id/cv_calendar">
-        </EditText>
+            android:elevation="4dp"
+            android:layout_marginTop="12dp"
+            android:layout_height="425dp"
+            android:layout_below="@id/tv_month_name"
+            app:compactCalendarTargetHeight="500dp"
+            app:compactCalendarBackgroundColor="@color/colorPrimary"
+            app:compactCalendarCurrentSelectedDayBackgroundColor="@color/colorPrimaryDark"
+            app:compactCalendarCurrentDayBackgroundColor="@color/colorAccent"
+            app:compactCalendarMultiEventIndicatorColor="@color/colorAccent"/>
+
 
         <RelativeLayout
             android:id="@+id/edit_button_relative_layout"
             android:layout_width="match_parent"
-            android:layout_height="80dp"
+            android:layout_height="wrap_content"
             android:background="@drawable/border"
-            android:layout_below="@id/et_month_note">
+            android:layout_marginTop="12dp"
+            android:layout_below="@id/cv_calendar">
 
             <TextView
                 android:id="@+id/tv_preview_text"
-                android:layout_width="wrap_content"
+                android:layout_width="match_parent"
                 android:layout_height="80dp"
                 android:gravity="top"
-                android:textSize="22sp"/>
+                android:textSize="22sp"
+                android:text="PREVIEW! Here you will see a preview of the data entered into this date!"/>
 
             <Button
                 android:id="@+id/calendar_edit_button"
-                android:text="@string/edit_button_text"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
-                android:layout_gravity="bottom|end"
-                android:layout_margin="@dimen/fab_margin"
                 android:layout_alignParentEnd="true"
                 android:layout_alignParentRight="true"
-                app:srcCompat="@android:drawable/ic_input_add" />
-
+                android:layout_gravity="bottom|end"
+                android:layout_margin="@dimen/fab_margin"
+                android:text="@string/edit_button_text"
+                android:visibility="visible" />
         </RelativeLayout>
-
-        <com.github.sundeepk.compactcalendarview.CompactCalendarView
-            android:id="@+id/cv_calendar"
-            android:layout_width="match_parent"
-            android:layout_height="425dp"
-            android:layout_below="@id/tv_month_name"
-            app:compactCalendarTargetHeight="500dp"/>
 
         <com.google.android.gms.ads.AdView
             xmlns:ads="http://schemas.android.com/apk/res-auto"
             android:id="@+id/addBar"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:layout_below="@+id/edit_button_relative_layout"
+            android:layout_marginTop="12dp"
+            android:layout_below="@id/edit_button_relative_layout"
             android:layout_centerHorizontal="true"
-            android:layout_alignParentBottom="true"
             ads:adSize="BANNER"
             ads:adUnitId="ca-app-pub-3940256099942544/6300978111">
         </com.google.android.gms.ads.AdView>
+
     </RelativeLayout>
+
+
 
 </ScrollView>

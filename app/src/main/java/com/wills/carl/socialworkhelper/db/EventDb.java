@@ -3,10 +3,8 @@ package com.wills.carl.socialworkhelper.db;
 import android.content.ContentValues;
 import android.content.Context;
 import android.database.Cursor;
-import android.database.CursorIndexOutOfBoundsException;
 import android.database.sqlite.SQLiteDatabase;
 import android.database.sqlite.SQLiteOpenHelper;
-import android.util.EventLog;
 import android.util.Log;
 
 import com.wills.carl.socialworkhelper.Supervision;
@@ -34,10 +32,11 @@ public class EventDb extends SQLiteOpenHelper {
     public static final String MONTH_NOTE_MONTH = "month";
     public static final String MONTH_NOTE_YEAR = "year";
     public static final String MONTH_NOTE_NOTE = "note";
+    private static int EVENT_DB_VERSION = 1;
 
 
     public EventDb (Context context) {
-        super(context, DATABASE_NAME, null, 1);
+        super(context, DATABASE_NAME, null, EVENT_DB_VERSION);
     }
 
     @Override
@@ -60,7 +59,8 @@ public class EventDb extends SQLiteOpenHelper {
 
     @Override
     public void onUpgrade(SQLiteDatabase db, int oldVersion, int newVersion){
-        //TODO: work out upgrade logic if necessary
+        db.execSQL("DROP TABLE IF EXISTS " + EVENT_TABLE_NAME);
+        onCreate(db);
     }
 
     public void removeAll(){

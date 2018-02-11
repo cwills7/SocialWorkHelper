@@ -1,13 +1,10 @@
 package com.wills.carl.socialworkhelper;
 
 import android.net.Uri;
-import android.support.v4.app.Fragment;
 import android.os.Bundle;
-import android.support.design.widget.FloatingActionButton;
-import android.support.design.widget.Snackbar;
-import android.support.v4.app.FragmentManager;
-import android.view.View;
 import android.support.design.widget.NavigationView;
+import android.support.v4.app.Fragment;
+import android.support.v4.app.FragmentManager;
 import android.support.v4.view.GravityCompat;
 import android.support.v4.widget.DrawerLayout;
 import android.support.v7.app.ActionBarDrawerToggle;
@@ -16,9 +13,6 @@ import android.support.v7.widget.Toolbar;
 import android.view.Menu;
 import android.view.MenuItem;
 
-import com.google.android.gms.ads.AdSize;
-import com.google.android.gms.ads.AdView;
-import com.google.android.gms.ads.MobileAds;
 import com.wills.carl.socialworkhelper.calendar.CalendarFragment;
 import com.wills.carl.socialworkhelper.db.EventDb;
 import com.wills.carl.socialworkhelper.history.HistoryFragment;
@@ -93,7 +87,7 @@ public class MainActivity extends AppCompatActivity
 
         //noinspection SimplifiableIfStatement
         if (id == R.id.action_settings) {
-            return true;
+
         }
 
         return super.onOptionsItemSelected(item);
@@ -113,6 +107,8 @@ public class MainActivity extends AppCompatActivity
             fragmentClass = HistoryFragment.class;
         } else if (id == R.id.nav_totals) {
 
+        } else if (id == R.id.nav_settings) {
+            fragmentClass = SettingsActivity.class;
         }
 
         try{

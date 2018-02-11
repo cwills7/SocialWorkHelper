@@ -23,17 +23,20 @@
         android:id="@+id/et_hours"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:visibility="invisible"/>
+        android:hint="How Many Hours?"
+        android:visibility="gone"/>
     <android.support.v7.widget.AppCompatSpinner
         android:id="@+id/spin_type"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:visibility="invisible">
+        android:spinnerMode="dropdown"
+        android:visibility="gone">
     </android.support.v7.widget.AppCompatSpinner>
     <EditText
         android:id="@+id/et_notes"
-        android:layout_width="wrap_content"
+        android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        android:visibility="invisible"/>
+        android:hint="Notes?"
+        android:visibility="gone"/>
 
 </LinearLayout>

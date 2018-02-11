@@ -1,0 +1,32 @@
+<?xml version="1.0" encoding="utf-8"?>
+<PreferenceScreen xmlns:android="http://schemas.android.com/apk/res/android">
+
+    <EditTextPreference
+       android:defaultValue="2018-01-01"
+        android:title="Licensure Start Date"
+        android:key="licensure_start"
+        android:summary="Licensure Start Date"/>
+
+    <EditTextPreference
+        android:defaultValue="2020-01-01"
+        android:title="Licensure End Date"
+        android:key="licensure_end"
+        android:summary="Licensure End Date"/>
+
+    <ListPreference
+        android:defaultValue="NONE"
+        android:title="State Licensed"
+        android:key="licensure_state"
+        android:summary="State Licensed"/>
+
+    <CheckBoxPreference
+        android:defaultValue="false"
+        android:title="Google Drive Backup"
+        android:key="backup_enabled"
+        android:summaryOn="Will back up a google spreadsheet"
+        android:summaryOff="Will not back up to a google spreadsheet" />
+    <EditTextPreference
+        android:title="Backup File Name"
+        android:key="backup_name"
+        android:summary="File Name for backup"/>
+</PreferenceScreen>
